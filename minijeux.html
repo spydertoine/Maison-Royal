@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini-jeux — Maison Royale</title>
+  <meta name="description" content="Récoltez des jetons gratuitement : roue de la fortune, mémoire royale, réflexe doré et pile ou face. Aucune mise, que des gains.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="minijeux">
+
+  <main>
+    <!-- Intro -->
+    <section class="content-page section" style="padding-bottom:0">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">La salle des trésors</p>
+          <h2>Récoltez vos <span class="gold-text">jetons.</span></h2>
+          <div class="rule-gold"></div>
+          <p class="lead" style="margin-inline:auto; margin-top:18px">
+            Ici, rien ne se mise — tout se gagne. Quatre divertissements offerts par la maison
+            pour garnir votre cassette. Revenez régulièrement : les largesses se renouvellent.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. Roue de la fortune -->
+    <section class="section" style="padding-top:30px; padding-bottom:30px">
+      <div class="container">
+        <div class="panel panel-pad corner-deco reveal" style="max-width:720px; margin-inline:auto">
+          <div class="mg-head">
+            <span class="mi">🎡</span>
+            <div>
+              <p class="eyebrow">Une rotation toutes les 4 heures</p>
+              <h3>La Roue de la Fortune</h3>
+            </div>
+          </div>
+          <div class="fortune-wrap">
+            <div class="fortune-outer">
+              <div class="wheel-pointer"></div>
+              <div class="fortune" id="fortune"></div>
+              <div class="wheel-hub"><span class="res" id="fortune-hub">♛</span></div>
+            </div>
+            <button class="btn btn-gold" id="fortune-spin">Tourner la roue</button>
+            <p class="cooldown" id="fortune-cd"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Mémoire royale -->
+    <section class="section" style="padding-top:30px; padding-bottom:30px">
+      <div class="container">
+        <div class="panel panel-pad corner-deco reveal" style="max-width:640px; margin-inline:auto">
+          <div class="mg-head">
+            <span class="mi">🃏</span>
+            <div>
+              <p class="eyebrow">Moins de coups, plus de jetons</p>
+              <h3>La Mémoire Royale</h3>
+            </div>
+          </div>
+          <div class="mg-stats">
+            <div class="mg-stat"><div class="n" id="memory-moves">0</div><div class="l">Coups joués</div></div>
+          </div>
+          <div class="memory-grid" id="memory-grid"></div>
+          <p class="mg-msg" id="memory-msg"></p>
+          <div class="mg-actions">
+            <button class="btn btn-ghost" id="memory-new">Nouvelle partie</button>
+          </div>
+          <p class="cooldown" id="memory-cd" style="text-align:center; margin-top:14px"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Réflexe doré -->
+    <section class="section" style="padding-top:30px; padding-bottom:30px">
+      <div class="container">
+        <div class="panel panel-pad corner-deco reveal" style="max-width:720px; margin-inline:auto">
+          <div class="mg-head">
+            <span class="mi">⚡</span>
+            <div>
+              <p class="eyebrow">15 secondes de précision</p>
+              <h3>Le Réflexe Doré</h3>
+            </div>
+          </div>
+          <div class="mg-stats">
+            <div class="mg-stat"><div class="n" id="reflex-timer">15 s</div><div class="l">Temps</div></div>
+            <div class="mg-stat"><div class="n" id="reflex-score">0</div><div class="l">Cibles</div></div>
+          </div>
+          <div class="reflex-zone" id="reflex-zone"></div>
+          <p class="mg-msg" id="reflex-msg"></p>
+          <div class="mg-actions">
+            <button class="btn btn-gold" id="reflex-start">Démarrer la manche</button>
+          </div>
+          <p class="cooldown" id="reflex-cd" style="text-align:center; margin-top:14px"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Pile ou Face -->
+    <section class="section" style="padding-top:30px; padding-bottom:70px">
+      <div class="container">
+        <div class="panel panel-pad corner-deco reveal" style="max-width:560px; margin-inline:auto">
+          <div class="mg-head">
+            <span class="mi">🪙</span>
+            <div>
+              <p class="eyebrow">Doublez la cagnotte… ou repartez de zéro</p>
+              <h3>Pile ou Face</h3>
+            </div>
+          </div>
+          <div class="coinflip-wrap">
+            <div class="flip-coin" id="coin">♛</div>
+            <div class="mg-stats" style="margin:0">
+              <div class="mg-stat"><div class="n" id="coin-pot">0</div><div class="l">Cagnotte</div></div>
+              <div class="mg-stat"><div class="n" id="coin-streak">0</div><div class="l">Série</div></div>
+            </div>
+            <div class="coin-buttons">
+              <button class="btn btn-ghost" id="coin-pile">Pile</button>
+              <button class="btn btn-ghost" id="coin-face">Face</button>
+            </div>
+            <button class="btn btn-gold" id="coin-cash" disabled>Encaisser la cagnotte</button>
+            <p class="mg-msg" id="coin-msg"></p>
+            <p class="cooldown" id="coin-cd"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/core.js"></script>
+  <script src="js/minigames.js"></script>
+</body>
+</html>

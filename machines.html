@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machines à sous — Maison Royale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="jeux">
+
+  <main>
+    <section class="game-page">
+      <div class="container">
+        <div class="game-header reveal">
+          <p class="eyebrow">Rouleaux</p>
+          <h1 class="gold-text">Machine à sous</h1>
+          <p class="lead" style="margin-inline:auto">Alignez trois symboles sur la ligne centrale. Trois couronnes ♛ déclenchent le jackpot.</p>
+        </div>
+
+        <div class="slot-machine reveal d1">
+          <div class="slot-frame">
+            <div class="reels">
+              <div class="reel" id="reel-0"><div class="reel-strip"></div></div>
+              <div class="reel" id="reel-1"><div class="reel-strip"></div></div>
+              <div class="reel" id="reel-2"><div class="reel-strip"></div></div>
+            </div>
+            <div class="payline"></div>
+
+            <div class="bet-display" style="margin-top:6px">
+              <div class="bet-box"><div class="k">Mise</div><div class="v" id="bet-amount">50</div></div>
+              <div class="bet-box"><div class="k">Dernier gain</div><div class="v" id="last-win">—</div></div>
+            </div>
+
+            <div class="controls" style="margin-top:8px">
+              <button class="btn btn-ghost btn-sm" id="bet-down">−</button>
+              <button class="btn btn-gold" id="spin-btn">Lancer 🎰</button>
+              <button class="btn btn-ghost btn-sm" id="bet-up">+</button>
+            </div>
+            <div class="msg-line" id="msg" style="margin-top:10px">Bonne chance !</div>
+          </div>
+
+          <h3 style="text-align:center; margin:34px 0 6px; font-size:1.4rem" class="gold-text">Table des gains</h3>
+          <p style="text-align:center; color:var(--muted); font-size:.85rem; margin-bottom:16px">Multiplicateurs appliqués à votre mise (3 symboles identiques)</p>
+          <div class="paytable" id="paytable"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/core.js"></script>
+  <script src="js/slots.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roulette — Maison Royale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="jeux">
+
+  <main>
+    <section class="game-page">
+      <div class="container">
+        <div class="game-header reveal">
+          <p class="eyebrow">Table de hasard</p>
+          <h1 class="gold-text">Roulette</h1>
+          <p class="lead" style="margin-inline:auto">Sélectionnez un jeton, posez-le sur le tapis, puis lancez le cylindre.</p>
+        </div>
+
+        <div class="roulette-wrap reveal d1">
+
+          <!-- Cylindre -->
+          <div class="panel panel-pad wheel-zone">
+            <div class="wheel-outer">
+              <div class="wheel-pointer"></div>
+              <div class="wheel" id="wheel"></div>
+              <div class="wheel-hub"><span class="res" id="hub-res">♛</span></div>
+            </div>
+            <div class="bet-display">
+              <div class="bet-box"><div class="k">Mise totale</div><div class="v" id="total-bet">0</div></div>
+              <div class="bet-box"><div class="k">Dernier gain</div><div class="v" id="last-win">—</div></div>
+            </div>
+            <div class="msg-line" id="msg">Faites vos jeux.</div>
+          </div>
+
+          <!-- Tapis -->
+          <div class="panel panel-pad">
+            <div style="margin-bottom:16px">
+              <div class="k" style="font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:10px">Valeur du jeton</div>
+              <div class="chip-tray" id="chip-tray">
+                <button class="chip selected" data-v="10">10</button>
+                <button class="chip" data-v="50">50</button>
+                <button class="chip" data-v="100">100</button>
+                <button class="chip" data-v="500">500</button>
+                <button class="chip" data-v="1000">1K</button>
+              </div>
+            </div>
+
+            <div class="bet-board table-felt" id="bet-board"></div>
+
+            <div class="controls" style="margin-top:20px">
+              <button class="btn btn-gold" id="spin-btn">Lancer 🎡</button>
+              <button class="btn btn-ghost btn-sm" id="undo-btn">Annuler</button>
+              <button class="btn btn-ghost btn-sm" id="clear-btn">Tout retirer</button>
+              <button class="btn btn-ghost btn-sm" id="repeat-btn">Rejouer la mise</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/core.js"></script>
+  <script src="js/roulette.js"></script>
+</body>
+</html>

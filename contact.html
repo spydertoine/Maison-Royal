@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Maison Royale</title>
+  <meta name="description" content="Une question, une suggestion ? Écrivez à la conciergerie de la Maison Royale.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="contact">
+
+  <main>
+    <section class="content-page section" style="padding-bottom:30px">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">La conciergerie</p>
+          <h2>Écrivez-nous <span class="gold-text">un mot.</span></h2>
+          <div class="rule-gold"></div>
+          <p class="lead" style="margin-inline:auto; margin-top:18px">
+            Une question, une idée de nouvelle table, un grain de sable dans l'expérience ?
+            Notre conciergerie lit chaque message avec attention.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:10px; padding-bottom:80px">
+      <div class="container">
+        <div class="contact-layout">
+
+          <!-- Formulaire (pas de balise <form> : envoi simulé en JS) -->
+          <div class="panel panel-pad corner-deco reveal d1">
+            <h3 style="margin-bottom:22px">Votre message</h3>
+            <div class="field">
+              <label for="c-name">Nom</label>
+              <input type="text" id="c-name" placeholder="Votre nom" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="c-email">Adresse e-mail</label>
+              <input type="email" id="c-email" placeholder="vous@exemple.com" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="c-message">Message</label>
+              <textarea id="c-message" rows="5" placeholder="Dites-nous tout…"></textarea>
+            </div>
+            <button class="btn btn-gold btn-block" id="c-send">Envoyer le message</button>
+            <p class="success-note" id="c-success"></p>
+          </div>
+
+          <!-- Coordonnées (fictives) -->
+          <div class="contact-info reveal d2">
+            <div class="line">
+              <span class="ci-ic">📍</span>
+              <div>
+                <div class="ci-k">Adresse</div>
+                <div class="ci-v">Pavillon Royal — 1, allée des Mises<br>Salon virtuel, partout dans le monde</div>
+              </div>
+            </div>
+            <div class="line">
+              <span class="ci-ic">✉️</span>
+              <div>
+                <div class="ci-k">E-mail</div>
+                <div class="ci-v">conciergerie@maison-royale.example</div>
+              </div>
+            </div>
+            <div class="line">
+              <span class="ci-ic">🕑</span>
+              <div>
+                <div class="ci-k">Disponibilité</div>
+                <div class="ci-v">Les tables sont ouvertes 24 h / 24, 7 j / 7.<br>La conciergerie répond sous 48 h.</div>
+              </div>
+            </div>
+            <div class="line">
+              <span class="ci-ic">♛</span>
+              <div>
+                <div class="ci-k">Rappel</div>
+                <div class="ci-v">La Maison Royale est un casino virtuel. Aucun argent réel n'y circule.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/core.js"></script>
+  <script>
+    /* Envoi simulé du formulaire (aucune balise <form>, aucun envoi réseau) */
+    document.addEventListener("DOMContentLoaded", function(){
+      var btn = document.getElementById("c-send");
+      var note = document.getElementById("c-success");
+      if (!btn) return;
+      btn.addEventListener("click", function(){
+        var name = document.getElementById("c-name").value.trim();
+        var email = document.getElementById("c-email").value.trim();
+        var msg = document.getElementById("c-message").value.trim();
+        var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        if (!name || !email || !msg){
+          note.style.color = "var(--lose)";
+          note.textContent = "Merci de remplir tous les champs.";
+          UI.toast("Quelques champs sont encore vides.", "lose", "✦");
+          return;
+        }
+        if (!emailOk){
+          note.style.color = "var(--lose)";
+          note.textContent = "Cette adresse e-mail ne semble pas valide.";
+          UI.toast("Adresse e-mail invalide.", "lose", "✦");
+          return;
+        }
+
+        note.style.color = "var(--win)";
+        note.textContent = "Merci " + name + " — votre message est bien parti vers la conciergerie.";
+        UI.toast("Message envoyé. Nous vous répondrons vite !", "win", "✉️");
+        Sound.win();
+
+        document.getElementById("c-name").value = "";
+        document.getElementById("c-email").value = "";
+        document.getElementById("c-message").value = "";
+      });
+    });
+  </script>
+</body>
+</html>

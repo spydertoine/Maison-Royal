@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blackjack — Maison Royale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="jeux">
+
+  <main>
+    <section class="game-page">
+      <div class="container">
+        <div class="game-header reveal">
+          <p class="eyebrow">Table de cartes</p>
+          <h1 class="gold-text">Blackjack</h1>
+          <p class="lead" style="margin-inline:auto">Le blackjack paie 3:2. Le croupier tire jusqu'à 17. À vous de battre la banque.</p>
+        </div>
+
+        <div class="panel panel-pad reveal d1" style="max-width:760px; margin-inline:auto">
+          <div class="table-felt">
+            <div class="bj-table">
+              <div class="hand-zone">
+                <div class="who">Croupier <span id="dealer-score" class="score-badge" style="display:none"></span></div>
+                <div class="hand" id="dealer-hand"></div>
+              </div>
+              <div class="msg-line" id="msg">Placez votre mise pour commencer.</div>
+              <div class="hand-zone">
+                <div class="who">Vous <span id="player-score" class="score-badge" style="display:none"></span></div>
+                <div class="hand" id="player-hand"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bet-display" style="margin-top:24px">
+            <div class="bet-box"><div class="k">Mise</div><div class="v" id="bet-amount">0</div></div>
+          </div>
+
+          <!-- Sélection de mise -->
+          <div id="bet-controls">
+            <div class="chip-tray" id="chip-tray">
+              <button class="chip" data-v="10">10</button>
+              <button class="chip" data-v="50">50</button>
+              <button class="chip" data-v="100">100</button>
+              <button class="chip" data-v="500">500</button>
+              <button class="chip" data-v="1000">1K</button>
+            </div>
+            <div class="controls" style="margin-top:18px">
+              <button class="btn btn-gold" id="deal-btn">Distribuer</button>
+              <button class="btn btn-ghost btn-sm" id="clear-bet">Effacer la mise</button>
+            </div>
+          </div>
+
+          <!-- Actions de jeu -->
+          <div class="controls" id="action-controls" style="margin-top:18px; display:none">
+            <button class="btn btn-gold" id="hit-btn">Tirer</button>
+            <button class="btn btn-ghost" id="stand-btn">Rester</button>
+            <button class="btn btn-ghost" id="double-btn">Doubler</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/core.js"></script>
+  <script src="js/blackjack.js"></script>
+</body>
+</html>

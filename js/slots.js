@@ -51,9 +51,11 @@
     }
     // force reflow puis lance l'animation
     void strip.offsetHeight;
+    // hauteur réelle d'un symbole (s'adapte aux tailles responsive)
+    const symH = strip.querySelector(".sym").offsetHeight || SYM_H;
     const dur = 2 + reelIdx*0.55;     // arrêts décalés
     strip.style.transition = `transform ${dur}s cubic-bezier(.16,.84,.2,1)`;
-    strip.style.transform = `translateY(${-(stopIndex*SYM_H)}px)`;
+    strip.style.transform = `translateY(${-(stopIndex*symH)}px)`;
     return dur;
   }
 
